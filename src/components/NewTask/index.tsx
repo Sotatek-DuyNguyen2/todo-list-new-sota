@@ -32,6 +32,8 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
                 ...task,
                 title: "",
                 description: "",
+                date: new Date(),
+                piority: "Normal",
             })
         } else {
             alert("Title is required!");
@@ -50,7 +52,7 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
                 <textarea  name="description" value={task.description} 
                             onChange={handleChange}  placeholder="Add description" />
             </div>
-            <DatePiority dateDetail={""} piorityDetail={""} isDetail={false} setDate={setDate} setPiority={setPiority} />
+            <DatePiority dateDetail={task.date} piorityDetail={task.piority} isDetail={false} setDate={setDate} setPiority={setPiority} />
             <button className="task__btn" onClick={addNewTask}>
                 <span className="task__btn--text">Add</span>
             </button>

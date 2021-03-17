@@ -3,7 +3,7 @@ import calendar from '../image/calendar.png';
 import DatePicker from "react-datepicker";
 import './style.sass'
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IDatePiority {
     isDetail: boolean,
@@ -15,8 +15,8 @@ interface IDatePiority {
 
 const DatePiority = ({isDetail, setDate, setPiority, dateDetail, piorityDetail}:IDatePiority) => {
 
-    const [startDate, setStartDate] = useState(isDetail ? new Date(dateDetail) : new Date());
-    const [piority, changePiority] = useState(isDetail ? piorityDetail : 'Normal');
+    const [startDate, setStartDate] = useState(new Date(dateDetail));
+    const [piority, changePiority] = useState(piorityDetail);
 
     const handleChangeDate = (date: any) => {
         setStartDate(date);
@@ -26,6 +26,10 @@ const DatePiority = ({isDetail, setDate, setPiority, dateDetail, piorityDetail}:
         changePiority(value);
         setPiority(value);
     }
+    useEffect(()=>{
+        setStartDate(dateDetail);
+        changePiority(piorityDetail);
+    },[dateDetail, piorityDetail])
     return (
         <div className="date-piority">
             <div className="date">
