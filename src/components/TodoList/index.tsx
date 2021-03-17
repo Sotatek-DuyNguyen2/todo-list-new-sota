@@ -3,6 +3,7 @@ import ItemTask from '../ItemTask';
 import { connect } from 'react-redux';
 import {removeTask} from '../../store/actions/tasks';
 import {searchTask} from '../../store/actions/search';
+import { useEffect, useState } from 'react';
 
 interface ITodoListProps {
     tasks: any,
@@ -15,9 +16,24 @@ const TodoList = ({
     removeTask,
     searchTask
 }: ITodoListProps) => {
+    const [bulk, setBulk] = useState(false);
+    const [taskRemove, setTaskRemove] = useState({});
     const updateSearchTask = (e: any) => {
         searchTask(e.target.value);
     }
+    const handleRemoveTask = () => {
+        removeTask(taskRemove)
+    }
+    useEffect(() => {
+        const task = tasks.find((item:any) => item.isChecked === true);
+        if (task){
+            setBulk(true);
+            setTaskRemove(task)
+        } else {
+            setBulk(false);
+            setTaskRemove({})
+        }
+    }, [tasks]);
     return (
         <div className="todo-list">
             <div className="list">
@@ -34,18 +50,18 @@ const TodoList = ({
                 }
                 </div>
             </div>
-            
-            <div className="bulk">
-                    <p className="bulk__title">Bulk Action:</p>
-                    <div className="">
-                        <button className="btn-done-bottom">
-                            <span className="text-btn-bottom">Done</span>
-                        </button>
-                        <button className="btn-remove-bottom" >
-                            <span  className="text-btn-bottom">Remove</span>
-                        </button>
-                    </div>
+            {bulk && <div className="bulk">
+                <p className="bulk__title">Bulk Action:</p>
+                <div className="">
+                    <button className="btn-done-bottom">
+                        <span className="text-btn-bottom">Done</span>
+                    </button>
+                    <button className="btn-remove-bottom" onClick={handleRemoveTask}>
+                        <span  className="text-btn-bottom">Remove</span>
+                    </button>
                 </div>
+            </div>}
+            
         </div>
     )
 }
@@ -53,7 +69,6 @@ const TodoList = ({
 const mapStateToProps = (state: any) => {
     return {
         tasks: state.tasks,
-        // bulk: state.bulk,
         search:state.search
     }
 }

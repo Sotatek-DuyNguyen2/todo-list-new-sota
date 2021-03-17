@@ -1,16 +1,19 @@
 import ItemDetail from '../ItemDetail';
 import './style.sass';
-import {removeTask} from '../../store/actions/tasks';
+import {removeTask, checkedTask} from '../../store/actions/tasks';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 
 interface ITaskItemProps {
     task: any,
     key: any,
-    removeTask: any
+    removeTask: any,
+    checkedTask: any,
 }
 
-const ItemTask = ({task, removeTask}: ITaskItemProps) => {
+const ItemTask = ({task, removeTask, checkedTask}: ITaskItemProps) => {
+    console.log(task);
+    
     const [isDetail, setDetail] = useState(false);
     const handleRemoveTask = () => {
         removeTask(task); 
@@ -21,11 +24,14 @@ const ItemTask = ({task, removeTask}: ITaskItemProps) => {
     const toggleDetail = () => {
         setDetail(!isDetail);
     }
+    const toggleChecked = () => {
+        checkedTask(task);
+    }
     return (
         <div className="">
             <div className="content-item">
                 <label className="content-item__checkbox">
-                    <input type="checkbox" />
+                    <input type="checkbox" checked={task.isChecked} onChange={toggleChecked}/>
                     <span style={{marginLeft:"0.5rem"}}>{task.title}</span>
                 </label>
                 <div className="content-item__btn">
@@ -50,6 +56,6 @@ const mapStateToProps = (state: any) => {
     }
 }
 const mapDispatchToProps = {
-    removeTask,
+    removeTask, checkedTask
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ItemTask);

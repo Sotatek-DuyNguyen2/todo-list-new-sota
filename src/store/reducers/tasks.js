@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, UPDATE_TASK } from '../actions/tasks';
+import { ADD_TASK, REMOVE_TASK, UPDATE_TASK, CHECKED_TASK } from '../actions/tasks';
 
 export default function tasks(state = [], action) {
     switch (action.type) {
@@ -21,6 +21,21 @@ export default function tasks(state = [], action) {
                 return item;
             });
             return updateState;
+        case CHECKED_TASK:
+            const stateCheck = state.map(item => {
+                if (item === action.payload){
+                    return {
+                        ...action.payload,
+                        isChecked: !action.payload.isChecked
+                    }
+                } else {
+                    return {
+                        ...item, 
+                        isChecked: false
+                    }
+                }
+            })
+            return stateCheck
         default:
             return state;
     }
