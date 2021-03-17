@@ -42,13 +42,14 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
         <div className="task">
             <p className="task__title">New Task</p>
             <div className="task__input">
-                <input type="text" name="title"
+                <input type="text" name="title" value={task.title}
                         onChange={handleChange} 
                         placeholder="Add new task" />
             </div>
             <div className="task__description">
                 <div className="task__description--label">Description</div>
-                <textarea  name="description" onChange={handleChange}  placeholder="Add description" />
+                <textarea  name="description" value={task.description} 
+                            onChange={handleChange}  placeholder="Add description" />
             </div>
             <DatePiority isDetail={false} setDate={setDate} setPiority={setPiority} />
             <button className="task__btn" onClick={addNewTask}>

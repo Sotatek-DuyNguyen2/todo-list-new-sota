@@ -6,7 +6,7 @@ interface ITaskItemProps {
     key: any
 }
 
-const ItemTask = ({task, key}: ITaskItemProps) => {
+const ItemTask = ({task}: ITaskItemProps) => {
     return (
         <div className="container-item">
             <div className="content-item">
