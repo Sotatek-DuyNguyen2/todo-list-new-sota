@@ -5,7 +5,6 @@ import search from './reducers/search';
 
 const allReducers = combineReducers({
     tasks,
-    bulk,
     search
 });
 

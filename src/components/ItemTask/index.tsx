@@ -1,12 +1,18 @@
 import ItemDetail from '../ItemDetail';
 import './style.sass';
-const ItemTask = () => {
+
+interface ITaskItemProps {
+    task: any,
+    key: any
+}
+
+const ItemTask = ({task, key}: ITaskItemProps) => {
     return (
         <div className="container-item">
             <div className="content-item">
                 <label className="checkbox">
                     <input type="checkbox" />
-                    <span style={{marginLeft:"0.5rem"}}>dsaf</span>
+                    <span style={{marginLeft:"0.5rem"}}>{task.title}</span>
                 </label>
                 <div className="">
                     <button className="btn-detail" >
@@ -19,7 +25,7 @@ const ItemTask = () => {
             </div>
 
 
-            <ItemDetail />
+            {/* <ItemDetail /> */}
         </div>
     )
 }
