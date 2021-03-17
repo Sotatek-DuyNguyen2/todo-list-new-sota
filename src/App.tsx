@@ -1,12 +1,13 @@
 import './App.sass';
 import NewTask from './components/NewTask';
+import TodoList from './components/TodoList';
 
 function App() {
   return (
     <div className="App">
       <div className="container">
           <NewTask />
-          <div>fasdfas</div>
+          <TodoList />
       </div>
     </div>
   );
