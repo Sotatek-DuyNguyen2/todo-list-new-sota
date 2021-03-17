@@ -1,6 +1,6 @@
 import './style.sass';
 import DatePiority from '../DatePiority';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 import { addTask } from '../../store/actions/tasks';
 
@@ -16,16 +16,19 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
         piority: "Normal",
         isChecked: false,
     })
-    const handleChange = (e: any) => {
+    const handleChange = useCallback((e:any)=> {
         setTask({...task, [e.target.name]:e.target.value})
-    } 
-    const setDate = (date: any) => {
+    }, [task]); 
+
+    const setDate = useCallback((date:any) => {
         setTask({...task, date});
-    }
-    const setPiority = (piority: string) => {
+    },[task])
+    
+    const setPiority = useCallback((piority: string) => {
         setTask({...task, piority});
-    }
-    const addNewTask = () => {
+    }, [task]);
+
+    const addNewTask = useCallback(()=>{
         if (task.title !== "") {
             addTaskAction(task)
             setTask({
@@ -38,8 +41,8 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
         } else {
             alert("Title is required!");
         }      
-    }
-    return (
+    },[task])
+    return useMemo(() => (
         <div className="task">
             <p className="task__title">New Task</p>
             <div className="task__input">
@@ -57,7 +60,7 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
                 <span className="task__btn--text">Add</span>
             </button>
         </div>
-    )
+    ), [task, addTaskAction])
 }
 
 const mapDispatchToProps =  {
