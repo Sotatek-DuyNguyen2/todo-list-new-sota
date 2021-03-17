@@ -3,10 +3,10 @@ import { ADD_TASK, REMOVE_TASK, UPDATE_TASK, CHECKED_TASK } from '../actions/tas
 export default function tasks(state = [], action) {
     switch (action.type) {
         case ADD_TASK:
-            const sortTasks = state.concat([action.payload])
-            // .sort((a,b) => {
-            //     return new Date(a.date).getTime() - new Date(b.date).getTime() 
-            // })
+            const sortTasks = state.concat([action.payload]).sort((a,b) => {
+                return new Date(a.date).getTime() - new Date(b.date).getTime() 
+            })
+            
             return sortTasks;
             
         case REMOVE_TASK:
