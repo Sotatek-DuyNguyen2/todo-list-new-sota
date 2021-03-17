@@ -34,6 +34,18 @@ const TodoList = ({
                 }
                 </div>
             </div>
+            
+            <div className="bulk">
+                    <p className="bulk__title">Bulk Action:</p>
+                    <div className="">
+                        <button className="btn-done-bottom">
+                            <span className="text-btn-bottom">Done</span>
+                        </button>
+                        <button className="btn-remove-bottom" >
+                            <span  className="text-btn-bottom">Remove</span>
+                        </button>
+                    </div>
+                </div>
         </div>
     )
 }
