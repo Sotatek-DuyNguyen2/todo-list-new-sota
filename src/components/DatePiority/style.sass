@@ -1,0 +1,76 @@
+.date-piority
+    display: grid
+    grid-template-columns: 1fr 1fr
+    margin-bottom: 8rem
+    .date
+        margin-right: 0.5rem
+        &__title
+            font:
+                size: 12px
+                weight: bold
+            margin-bottom: 6px
+        &__box
+            display: flex
+            width: fit-content
+            border: 1px solid #000000
+            &--picker
+                border: none
+                border-right: 1px solid #000000
+                height: 27px
+                padding: 3px
+            &--picker:focus
+                outline: none
+            &--icon
+                padding: 3px
+            &--icon > img
+                width: 22px
+                color: #444444
+    .piority
+        &__title
+            @extend .date__title
+        &__dropdown:hover .content-piority
+            opacity: 1
+            
+.dropdown
+    &__content
+        font-size: 12px
+        padding: 8px
+        border: 1px solid #000000
+        margin: 0
+        display: flex
+        justify-content: space-between
+        align-items: center
+        cursor: pointer
+        text-transform: capitalize
+        &--icon
+            & > img
+                width: 12px
+
+.content-piority
+    opacity: 0
+
+.list-piority 
+    position: absolute
+    width: 196px
+    
+
+.list-piority ul
+    list-style: none
+    font-size: 12px
+    padding: 0
+    box-shadow: 0 2px 8px rgba(25,25,25,0.3)
+    background: white
+    margin: 0
+    width: 100%
+.item-piority 
+    padding: 7px
+    border-bottom: 1px solid #e7e7e9
+    cursor: pointer
+    
+
+.item-piority:hover 
+    background: #e7e7e9
+
+                
+.piority__drodown:hover .content-piority
+    opacity: 1
