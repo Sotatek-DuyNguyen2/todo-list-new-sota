@@ -1,6 +1,6 @@
 import './style.sass';
 import DatePiority from '../DatePiority';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTask } from '../../store/actions/tasks';
 
