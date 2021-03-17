@@ -3,14 +3,11 @@ import './style.sass';
 
 const ItemDetail = () => {
     return (
-        <div className="content-detail">
-            <input className="title-task" type="text" name="title"
-                />
-            <div className="description">
-                <label  className="title-label">Description</label>
-                <textarea id="description-detail" name="description"
-                       
-                        />
+        <div className="detail">
+            <input className="detail__title" type="text" name="title" />
+            <div className="detail__description">
+                <div  className="detail__description--label">Description</div>
+                <textarea id="detail__description--input" name="description" />
             </div>
             {/* <DatePiority isDetail={true} 
                         date={setDate} piority={setPiority}

@@ -26,7 +26,6 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
         setTask({...task, piority});
     }
     const addNewTask = () => {
-        console.log(task);
         if (task.title !== "") {
             addTaskAction(task)
             setTask({

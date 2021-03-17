@@ -18,8 +18,8 @@ const TodoList = ({
     displayBulkAction,
     searchTask
 }: ITodoListProps) => {
-    const updateSearchTask = () => {
-
+    const updateSearchTask = (e: any) => {
+        searchTask(e.target.value);
     }
     return (
         <div className="todo-list">
