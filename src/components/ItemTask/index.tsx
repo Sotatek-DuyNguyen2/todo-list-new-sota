@@ -3,6 +3,7 @@ import './style.sass';
 import {removeTask} from '../../store/actions/tasks';
 import {displayBulkAction} from '../../store/actions/bulk';
 import { connect } from 'react-redux';
+import { useState } from 'react';
 
 interface ITaskItemProps {
     task: any,
@@ -11,9 +12,12 @@ interface ITaskItemProps {
 }
 
 const ItemTask = ({task, removeTask}: ITaskItemProps) => {
-
+    const [isDetail, setDetail] = useState(true);
     const handleRemoveTask = () => {
         removeTask(task); 
+    }
+    const changeIsDetail = () => {
+        setDetail(!isDetail);
     }
     return (
         <div className="">
@@ -33,7 +37,8 @@ const ItemTask = ({task, removeTask}: ITaskItemProps) => {
             </div>
 
 
-            <ItemDetail />
+            {isDetail && <ItemDetail task={task} changeIsDetail={changeIsDetail}/> }
+            
         </div>
     )
 }

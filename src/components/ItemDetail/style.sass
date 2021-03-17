@@ -10,21 +10,36 @@
         border: 1px solid #BDBDBD
         border-radius: 5px
         width: -webkit-fill-available
-.hideDetail
-    display: none
+    &__description
+        margin: 1.5rem 0
+        &--label
+            font:
+                size: 12px
+                weight: bold
+            margin: 0.5rem 0
+        & > textarea 
+            font-size: 12px
+            padding: 5px
+            border-radius: 2px
+            border: 1px solid #000000 
+            min-height: 125px
+            width: -webkit-fill-available
+    &__btn
+        margin-top: 25px
+        text-align: center
+        width: 100%
+        background-color: #5CB85C
+        padding: 10px
+        border: none
+        border-radius: 5px
+        cursor: pointer
+        &--text
+            color: #fff
+            font:
+                size: 15px
+                weight: bold
+    &__btn:hover
+        background-color: #53A453
+    &__btn:focus
+        outline: none
 
-.title-task
-    
-
-.btn-update
-    margin-top: 25px
-    text-align: center
-    width: 100%
-    background-color: #5CB85C
-    padding: 10px
-    border: none
-    border-radius: 5px
-    cursor: pointer
-
-.btn-update:focus
-    outline: none

@@ -50,7 +50,7 @@ const NewTask = ({addTaskAction}: INewTaskProps) => {
                 <textarea  name="description" value={task.description} 
                             onChange={handleChange}  placeholder="Add description" />
             </div>
-            <DatePiority isDetail={false} setDate={setDate} setPiority={setPiority} />
+            <DatePiority dateDetail={""} piorityDetail={""} isDetail={false} setDate={setDate} setPiority={setPiority} />
             <button className="task__btn" onClick={addNewTask}>
                 <span className="task__btn--text">Add</span>
             </button>

@@ -8,13 +8,15 @@ import { useState } from 'react';
 interface IDatePiority {
     isDetail: boolean,
     setDate: any,
-    setPiority: any
+    setPiority: any,
+    dateDetail: any,
+    piorityDetail: any,
 }
 
-const DatePiority = ({isDetail, setDate, setPiority}:IDatePiority) => {
+const DatePiority = ({isDetail, setDate, setPiority, dateDetail, piorityDetail}:IDatePiority) => {
 
-    const [startDate, setStartDate] = useState(isDetail ? new Date() : new Date());
-    const [piority, changePiority] = useState(isDetail ? "" : 'Normal');
+    const [startDate, setStartDate] = useState(isDetail ? new Date(dateDetail) : new Date());
+    const [piority, changePiority] = useState(isDetail ? piorityDetail : 'Normal');
 
     const handleChangeDate = (date: any) => {
         setStartDate(date);
