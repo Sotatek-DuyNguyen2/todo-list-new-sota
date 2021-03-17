@@ -2,20 +2,17 @@ import './style.sass';
 import ItemTask from '../ItemTask';
 import { connect } from 'react-redux';
 import {removeTask} from '../../store/actions/tasks';
-import {displayBulkAction} from '../../store/actions/bulk';
 import {searchTask} from '../../store/actions/search';
 
 interface ITodoListProps {
     tasks: any,
     search: any,
     removeTask: any,
-    displayBulkAction: any,
     searchTask: any,
 }
 const TodoList = ({
     tasks, search,
     removeTask,
-    displayBulkAction,
     searchTask
 }: ITodoListProps) => {
     const updateSearchTask = (e: any) => {
@@ -50,7 +47,6 @@ const mapStateToProps = (state: any) => {
 }
 const mapDispatchToProps = {
     removeTask,
-    displayBulkAction,
     searchTask
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

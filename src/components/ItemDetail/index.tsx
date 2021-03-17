@@ -53,7 +53,7 @@ const ItemDetail = ({task, updateTask, changeIsDetail}: IDetailItemProps) => {
             <DatePiority isDetail={true} 
                         setDate={setDate} setPiority={setPiority}
                         dateDetail={task.date} piorityDetail={task.piority}/>
-            <button className="detail__btn" >
+            <button className="detail__btn" onClick={handleUpdateTask}>
                 <span className="detail__btn--text">Update</span>
             </button>
         </div>

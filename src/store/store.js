@@ -1,5 +1,4 @@
-import { createStore, combineReducers } from 'redux';
-import bulk from './reducers/bulk';
+import { createStore, combineReducers } from 'redux'; 
 import tasks from './reducers/tasks';
 import search from './reducers/search';
 

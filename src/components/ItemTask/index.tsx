@@ -1,7 +1,6 @@
 import ItemDetail from '../ItemDetail';
 import './style.sass';
 import {removeTask} from '../../store/actions/tasks';
-import {displayBulkAction} from '../../store/actions/bulk';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 
@@ -12,11 +11,14 @@ interface ITaskItemProps {
 }
 
 const ItemTask = ({task, removeTask}: ITaskItemProps) => {
-    const [isDetail, setDetail] = useState(true);
+    const [isDetail, setDetail] = useState(false);
     const handleRemoveTask = () => {
         removeTask(task); 
     }
     const changeIsDetail = () => {
+        setDetail(!isDetail);
+    }
+    const toggleDetail = () => {
         setDetail(!isDetail);
     }
     return (
@@ -27,7 +29,7 @@ const ItemTask = ({task, removeTask}: ITaskItemProps) => {
                     <span style={{marginLeft:"0.5rem"}}>{task.title}</span>
                 </label>
                 <div className="content-item__btn">
-                    <button className="btn-detail" >
+                    <button className="btn-detail" onClick={toggleDetail}>
                         <span className="text-btn">Detail</span>
                     </button>
                     <button className="btn-remove" onClick={handleRemoveTask}>
@@ -49,6 +51,5 @@ const mapStateToProps = (state: any) => {
 }
 const mapDispatchToProps = {
     removeTask,
-    displayBulkAction
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ItemTask);
